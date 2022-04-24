@@ -12,13 +12,14 @@ struct Node {
     T value;
     int index;
     Node<T>* next;
+    Node<T>* prev;
 
-    Node(T _value) : value(_value), next(nullptr) {}
+    Node(T _value) : value(_value), next(nullptr), prev(nullptr) {}
 };
 
 
 template<typename T>
-class myStack {
+class myQueue {
 private:
     Node<T>* first;
     Node<T>* last;
@@ -32,7 +33,7 @@ private:
     void quickSort(pr_t);
 
 public:
-    myStack() : first(nullptr), last(nullptr), _size(0) {}
+    myQueue() : first(nullptr), last(nullptr), _size(0) {}
 
     bool empty();
     void push_back(const T);
@@ -59,12 +60,12 @@ public:
 };
 
 template<typename T>
-bool myStack<T>::empty() {
+bool myQueue<T>::empty() {
     return first == nullptr;
 }
 
 template<typename T>
-void myStack<T>::push_back(const T _value) {
+void myQueue<T>::push_back(const T _value) {
     Node<T>* _pointer = new Node(_value);
     if (this->empty()) {
         first = _pointer;
@@ -77,9 +78,11 @@ void myStack<T>::push_back(const T _value) {
         last = _pointer;
         first->next = last;
         _pointer->index = first->index + 1;
+        _pointer->prev = first;
     }
     else {
         last->next = _pointer;
+        _pointer->prev = last;
         _pointer->index = last->index + 1;
         last = _pointer;
     }
@@ -88,7 +91,7 @@ void myStack<T>::push_back(const T _value) {
 }
 
 template<typename T>
-void myStack<T>::print() {
+void myQueue<T>::print() {
     if (this->empty()) return;
     Node<T>* _pointer = first;
     while (_pointer) {
@@ -99,10 +102,11 @@ void myStack<T>::print() {
 }
 
 template<typename T>
-void myStack<T>::remove_first() {
+void myQueue<T>::remove_first() {
     if (this->empty()) return;
     Node<T>* _pointer = first;
     first = _pointer->next;
+    first->prev = nullptr;
     delete _pointer;
 
     Node<T>* _tempPointer = first;
@@ -115,7 +119,7 @@ void myStack<T>::remove_first() {
 }
 
 template<typename T>
-void myStack<T>::remove_last() {
+void myQueue<T>::remove_last() {
     if (this->empty()) return;
     if (first == last) {
         remove_first();
@@ -132,7 +136,7 @@ void myStack<T>::remove_last() {
 }
 
 template<typename T>
-void myStack<T>::remove(const int _index) {
+void myQueue<T>::remove(const int _index) {
     if (this->empty()) return;
     if (first->index == _index) {
         remove_first();
@@ -152,6 +156,7 @@ void myStack<T>::remove(const int _index) {
         throw "Error! This element does not exist!";
     }
     slow->next = fast->next;
+    slow->next->prev = slow;
     slow = fast->next;
     while(slow) {
         slow->index -= 1;
@@ -162,7 +167,7 @@ void myStack<T>::remove(const int _index) {
 }
 
 template<typename T>
-int myStack<T>::find(T _value) {
+int myQueue<T>::find(T _value) {
     Node<T>* p = first;
     while (p && p->val != _value){
         p = p->next;
@@ -171,12 +176,12 @@ int myStack<T>::find(T _value) {
 }
 
 template<typename T>
-int myStack<T>::size(){
+int myQueue<T>::size(){
     return this->_size;
 }
 
 template<typename T>
-Node<T>* myStack<T>::at(const int _index) {
+Node<T>* myQueue<T>::at(const int _index) {
     if (this->empty()){
         throw "Error! Stack is empty!";
     }
@@ -192,7 +197,7 @@ Node<T>* myStack<T>::at(const int _index) {
 
 
 template<typename T>
-void myStack<T>::selectionSort(){
+void myQueue<T>::selectionSort(){
     int min;
     for (int i = 0; i < this->_size; i++)
     {
@@ -209,7 +214,7 @@ void myStack<T>::selectionSort(){
 
 
 template<typename T>
-int myStack<T>::partition(pr_t _limits)
+int myQueue<T>::partition(pr_t _limits)
 {
 
     int pivot = _limits.first;
@@ -246,7 +251,7 @@ int myStack<T>::partition(pr_t _limits)
 }
 
 template<typename T>
-void myStack<T>::quickSort(pr_t _limits)
+void myQueue<T>::quickSort(pr_t _limits)
 {
 
     if (_limits.first >= _limits.second)
@@ -262,7 +267,7 @@ void myStack<T>::quickSort(pr_t _limits)
 }
 
 template<typename T>
-void myStack<T>::sort(string _method){
+void myQueue<T>::sort(string _method){
     if(_method == "selectionSort"){
         this->selectionSort();
     }
