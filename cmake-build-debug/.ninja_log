@@ -1,0 +1,16 @@
+# ninja log v5
+13	121	6725269328857486	CMakeFiles/Lab4.dir/src/myQueue.cpp.obj	dae02a4b5a4ea9f0
+1	388	6725271990442034	build.ninja	bbeb7b82340c6c99
+1	1115	6725271431273084	CMakeFiles/Lab4.dir/src/main.cpp.obj	1aa91d7f4ea06ee9
+1117	1460	6725271434654639	Lab4.exe	4f41c7891bd81929
+4	7548	6725272491438679	CMakeFiles/Lab4.dir/src/myQueue.cpp.obj	dae02a4b5a4ea9f0
+9	7654	6725272492457962	CMakeFiles/Lab4.dir/src/main.cpp.obj	1aa91d7f4ea06ee9
+7654	8422	6725272499732845	Lab4.exe	4f7ecd7f33856631
+4	4373	6725275789063221	CMakeFiles/Lab4.dir/src/myQueue.cpp.obj	dae02a4b5a4ea9f0
+10	4428	6725275789742737	CMakeFiles/Lab4.dir/src/main.cpp.obj	1aa91d7f4ea06ee9
+4429	5727	6725275802680929	Lab4.exe	4f7ecd7f33856631
+9	3706	6725278658539864	CMakeFiles/Lab4.dir/src/myQueue.cpp.obj	dae02a4b5a4ea9f0
+5	3861	6725278660078782	CMakeFiles/Lab4.dir/src/main.cpp.obj	1aa91d7f4ea06ee9
+3862	4089	6725278662303904	Lab4.exe	4f7ecd7f33856631
+5	3657	6725282778076373	CMakeFiles/Lab4.dir/src/main.cpp.obj	1aa91d7f4ea06ee9
+3657	3879	6725282780204885	Lab4.exe	4f7ecd7f33856631
